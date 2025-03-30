@@ -12,6 +12,10 @@ export default function LoginPage() {
     router.push('/manager/login'); // Redirige a la página de inicio de sesión del gerente
   };
 
+  const handleUserLoginRedirect = () => {
+    router.push('/Usuarios/login'); // Redirige a la página de inicio de sesión del usuario
+  };
+
   return (
     <div className={styles.loginContainer}>
       <h2 className={styles.loginTitle}>Inicio de Sesión</h2>
@@ -21,6 +25,9 @@ export default function LoginPage() {
         </button>
         <button onClick={handleManagerLoginRedirect} className={styles.loginButton}>
           Iniciar Sesión como Gerente de Proyectos
+        </button>
+        <button onClick={handleUserLoginRedirect} className={styles.loginButton}>
+          Iniciar Sesión como Usuario
         </button>
       </div>
     </div>

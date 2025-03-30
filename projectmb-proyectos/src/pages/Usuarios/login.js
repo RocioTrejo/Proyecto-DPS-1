@@ -15,9 +15,9 @@ export default function ManagerLoginPage() {
     e.preventDefault();
 
     // Validar credenciales
-    if (username === 'Deysi' && password === 'manager2025') {
-      login(username, 'Gerente'); // Asegúrate de que el rol sea correcto
-      router.push('/manager/projects'); // Redirige a la página de gestión de proyectos
+    if (username === 'Rocio' && password === '123456') {
+      login(username, 'Usuario'); // Inicia sesión como usuario
+      router.push('/Usuarios'); // Redirige a la página de gestión de usuarios
     } else {
       setError('Credenciales incorrectas. Inténtalo de nuevo.');
     }

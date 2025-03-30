@@ -18,5 +18,10 @@ export const ROLES = {
       PERMISSIONS.SUPERVISE_ACTIVITY,
       PERMISSIONS.SYSTEM_MAINTENANCE,
     ],
-    [ROLES.USER]: [],
+    [ROLES.MANAGER]: [
+      PERMISSIONS.SUPERVISE_ACTIVITY, // Permiso para supervisar actividad
+    ],
+    [ROLES.USER]: [
+      PERMISSIONS.SUPERVISE_ACTIVITY,
+    ],
   };
