@@ -1,0 +1,222 @@
+/* Header superior */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #0070f3; /* Color azul para el header */
+    color: rgba(255, 255, 255, 0.664);
+    padding: 15px 20px; /* Reducir el padding del header */
+    display: flex;
+    justify-content: flex-end; /* Alinear el contenido a la derecha */
+    align-items: center; /* Alinear verticalmente el contenido */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .header .logoutButton {
+    padding: 8px 15px; /* Botón más pequeño */
+    font-size: 0.9rem; /* Reducir el tamaño de la fuente */
+    font-weight: bold;
+    color: white;
+    background-color: #ff4d4f;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-left: auto; /* Asegura que el botón no quede oculto a la derecha */
+    margin-right: 30px; /* Añade un margen derecho para evitar que quede pegado al borde */
+  }
+  
+  .header .logoutButton:hover {
+    background-color: #d9363e;
+    transform: scale(1.05);
+    
+  }
+  
+  /* Contenedor principal */
+  .managerContainer {
+    padding: 100px 20px 20px; /* Ajustar el padding superior para evitar que el header cubra el contenido */
+    background: #f9f9f9; /* Fondo claro */
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+  }
+  
+  /* Título */
+  .title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #0070f3;
+    font-weight: bold;
+  }
+  
+  /* Contenedor de creación de proyectos */
+  .projectInputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 50px; /* Espacio entre el formulario y los proyectos creados */
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .inputField {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+  }
+  
+  .inputField:focus {
+    outline: none;
+    border-color: #0070f3;
+    box-shadow: 0 0 5px rgba(0, 112, 243, 0.5);
+  }
+  
+  .userDropdownContainer {
+    position: relative;
+  }
+  
+  .dropdownButton {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: #0070f3;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .dropdownButton:hover {
+    background-color: #005bb5;
+    transform: scale(1.05);
+  }
+  
+  .userDropdown {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 5px;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 10;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .userDropdown li {
+    list-style: none;
+    margin-bottom: 5px;
+  }
+  
+  .addButton,
+  .saveButton {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .addButton:hover,
+  .saveButton:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+  }
+  
+  /* Lista de proyectos */
+  .projectList {
+    list-style: none;
+    padding: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajustar columnas automáticamente */
+    gap: 20px; /* Espaciado entre los cuadrados */
+  }
+  
+  /* Proyectos creados */
+  .projectItem {
+    background: rgba(255, 255, 255, 0.753);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 20px;
+    align-items: center;
+    height: 250px; /* Altura fija para que sea un cuadrado */
+    width: 250px; /* Ancho fijo para que sea un cuadrado */
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .projectItem:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .projectItem span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .projectItem ul {
+    margin-top: 10px;
+    padding-left: 0;
+    list-style: none;
+  }
+  
+  .projectItem ul li {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .editButton,
+  .deleteButton {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .editButton {
+    background-color: #ffc107;
+    margin-bottom: 5px;
+  }
+  
+  .editButton:hover {
+    background-color: #e0a800;
+    transform: scale(1.05);
+  }
+  
+  .deleteButton {
+    background-color: #ff4d4f;
+  }
+  
+  .deleteButton:hover {
+    background-color: #d9363e;
+    transform: scale(1.05);
+  }
