@@ -113,4 +113,4 @@ GitHub: https://RocioTrejo github.com
 Deysi Sosa
 GitHub: https://deysisosa github.com
 
-Enlace del drive con el video: https://drive.google.com/drive/folders/1hGFYhzicokvQMFGZ_5_NQfJG0PhheNVP?usp=sharing
+Enlace del drive con el video y documentacion de codigo con evidencias: https://drive.google.com/drive/folders/1hGFYhzicokvQMFGZ_5_NQfJG0PhheNVP?usp=sharing
