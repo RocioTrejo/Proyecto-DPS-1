@@ -1,40 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Dashboard Multi-Rol con Firebase
 
-## Getting Started
+Este proyecto es un panel de administración que permite gestionar usuarios y proyectos, con control de acceso basado en roles. Está desarrollado en React (Next.js), usando Firebase como backend para autenticación y base de datos.
 
-First, run the development server:
+## Tecnologías Utilizadas
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- React / Next.js
+- Firebase (Firestore y Authentication)
+- CSS Modules
+- Visual Studio Code
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Roles y Accesos
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Administrador
+- Crear, editar y eliminar usuarios
+- Asignar roles
+- Crear, editar y eliminar proyectos
+- Ver y gestionar todos los datos
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### Gerente
+- Crear y editar proyectos
+- Asignar usuarios a proyectos
+- Visualizar proyectos propios y asignados
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+### Usuario
+- Ver proyectos asignados
+- Agregar comentarios
+- Cambiar estado del proyecto si está habilitado
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Estructura del Proyecto
+/src
+  /components
+  /context
+  /pages
+  /services
+  /styles
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Instalación
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+1. se descargo la carpeta y se trabajo de forma local luego se subio el documento y actualizo
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Funcionalidades Principales
 
-## Deploy on Vercel
+- Autenticación basada en Firestore
+- Control de acceso por roles
+- Gestión de usuarios y proyectos
+- Cambio de estado del proyecto (nuevo, en proceso, finalizado)
+- Sistema de comentarios por proyecto
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+
+## Conexion de la base de datos
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
+
+const firebaseConfig = {
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+};
+
+const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
+
+
+
+## Funciones clave del proyecto
+
+| Función / Constante        | Descripción                                                                 |
+|----------------------------|-----------------------------------------------------------------------------|
+| `useAuth`                  | Hook para acceder al contexto de autenticación en toda la app.              |
+| `login(username, role)`    | Inicia sesión y guarda el usuario en `localStorage`.                       |
+| `logout()`                 | Cierra sesión y elimina el usuario autenticado.                             |
+| `hasPermission(permission)`| Verifica si el usuario tiene permiso según su rol.                         |
+| `getUsers()`               | Obtiene todos los usuarios desde Firebase.                                  |
+| `addUser(user)`            | Agrega un nuevo usuario a Firebase.                                         |
+| `updateUser(id, data)`     | Actualiza la información de un usuario en Firebase.                         |
+| `deleteUser(id)`           | Elimina un usuario de la base de datos.                                     |
+| `getProjects()`            | Obtiene todos los proyectos desde Firebase.                                 |
+| `addProject(project)`      | Agrega un nuevo proyecto a la base de datos.                                |
+| `updateProject(id, data)`  | Modifica nombre, usuarios o estado de un proyecto existente.                |
+| `deleteProject(id)`        | Elimina un proyecto de la base de datos.                                    |
+| `ProtectedRoute`           | Componente que restringe rutas según el rol del usuario (Admin, Gerente, Usuario)
+
+## Autores
+
+Rocio Trejo  
+GitHub: https://RocioTrejo github.com/tuusuario
+
+Deysi Sosa
+GitHub: https://deysisosa github.com/tuusuario
+
