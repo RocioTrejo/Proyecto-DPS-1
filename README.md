@@ -1,6 +1,23 @@
+integrantes:
+
+Steffany Rocio Leonor Trejo      LT172547
+Deysi Guadalupe Sosa De Paz Sosa  DS170922
+
 # Dashboard Multi-Rol con Firebase
 
 Este proyecto es un panel de administración que permite gestionar usuarios y proyectos, con control de acceso basado en roles. Está desarrollado en React (Next.js), usando Firebase como backend para autenticación y base de datos.
+
+# Clonar el repositorio
+git clone https://github.com/usuario/nombre-del-proyecto.git
+
+# Entrar a la carpeta del proyecto
+cd nombre-del-proyecto
+
+# Instalar dependencias
+npm install
+
+# Iniciar servidor de desarrollo
+npm run dev
 
 ## Tecnologías Utilizadas
 
@@ -86,8 +103,8 @@ export const db = getFirestore(app);
 ## Autores
 
 Rocio Trejo  
-GitHub: https://RocioTrejo github.com/tuusuario
+GitHub: https://RocioTrejo github.com
 
 Deysi Sosa
-GitHub: https://deysisosa github.com/tuusuario
+GitHub: https://deysisosa github.com
 
