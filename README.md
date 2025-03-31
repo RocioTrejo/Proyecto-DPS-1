@@ -100,6 +100,8 @@ export const db = getFirestore(app);
 | `deleteProject(id)`        | Elimina un proyecto de la base de datos.                                    |
 | `ProtectedRoute`           | Componente que restringe rutas según el rol del usuario (Admin, Gerente, Usuario)
 
+
+
 ## Autores
 
 Rocio Trejo  
