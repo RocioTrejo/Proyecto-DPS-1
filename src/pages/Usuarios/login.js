@@ -3,23 +3,45 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import styles from '@styles/login.module.css';
 
-export default function ManagerLoginPage() {
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { db } from 'src/services/firebaseConfig';
+
+export default function UserLoginPage() {
   const { login } = useAuth();
   const router = useRouter();
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    setError('');
+    setLoading(true);
 
-    // Validar credenciales
-    if (username === 'Rocio' && password === '123456') {
-      login(username, 'Usuario'); // Inicia sesión como usuario
-      router.push('/Usuarios'); // Redirige a la página de gestión de usuarios
-    } else {
-      setError('Credenciales incorrectas. Inténtalo de nuevo.');
+    try {
+      const q = query(
+        collection(db, 'users'),
+        where('username', '==', username),
+        where('password', '==', password),
+        where('role', '==', 'Usuario') // Filtra solo usuarios con tipo "Usuario"
+      );
+
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+        const userData = querySnapshot.docs[0].data();
+        login(username, userData.role);
+        router.push('/Usuarios');
+      } else {
+        setError('Usuario o contraseña incorrectos, o tipo de usuario no permitido.');
+      }
+    } catch (err) {
+      console.error('Error al iniciar sesión:', err);
+      setError('Ocurrió un error al iniciar sesión.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -28,7 +50,9 @@ export default function ManagerLoginPage() {
       <h2 className={styles.loginTitle}>Inicio de Sesión</h2>
       <div className={styles.formContainer}>
         <form onSubmit={handleLogin}>
-          <label htmlFor="username">Usuario</label>
+          <label htmlFor="username" className={styles.label}>
+            Usuario
+          </label>
           <input
             type="text"
             id="username"
@@ -36,8 +60,12 @@ export default function ManagerLoginPage() {
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Ingresa tu usuario"
             className={styles.inputField}
+            required
           />
-          <label htmlFor="password">Contraseña</label>
+
+          <label htmlFor="password" className={styles.label}>
+            Contraseña
+          </label>
           <input
             type="password"
             id="password"
@@ -45,10 +73,13 @@ export default function ManagerLoginPage() {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Ingresa tu contraseña"
             className={styles.inputField}
+            required
           />
+
           {error && <p className={styles.errorMessage}>{error}</p>}
-          <button type="submit" className={styles.loginButton}>
-            Iniciar Sesión
+
+          <button type="submit" className={styles.loginButton} disabled={loading}>
+            {loading ? 'Validando...' : 'Iniciar Sesión'}
           </button>
         </form>
       </div>
