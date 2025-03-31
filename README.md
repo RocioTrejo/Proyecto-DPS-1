@@ -7,6 +7,9 @@ Deysi Guadalupe Sosa De Paz Sosa  DS170922
 
 Este proyecto es un panel de administración que permite gestionar usuarios y proyectos, con control de acceso basado en roles. Está desarrollado en React (Next.js), usando Firebase como backend para autenticación y base de datos.
 
+# Enlace de la base
+https://console.firebase.google.com/u/0/project/proyecto-avance-dps-1-81c85/firestore/databases/-default-/data/~2Fprojects~2F7OJ7fKS7IWHmyD9D5h7M
+
 # Clonar el repositorio
 git clone https://github.com/usuario/nombre-del-proyecto.git
 
