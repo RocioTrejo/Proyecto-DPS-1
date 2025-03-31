@@ -1,0 +1,79 @@
+/* Contenedor principal */
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #0070f3, #28a745);
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* Título de inicio de sesión */
+.loginTitle {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Contenedor del formulario */
+.formContainer {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Etiquetas del formulario */
+.label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  color: white;
+}
+
+/* Campos de entrada */
+.inputField {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.inputField:focus {
+  outline: none;
+  border-color: #0070f3;
+  box-shadow: 0 0 5px rgba(0, 112, 243, 0.5);
+}
+
+/* Mensaje de error */
+.errorMessage {
+  color: #ff4d4f;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+/* Botón de inicio de sesión */
+.loginButton {
+  width: 90%; /* Reducir el ancho para moverlo hacia la izquierda */
+  margin: 0 auto; /* Centrar el botón horizontalmente */
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background-color: #0070f3;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.loginButton:hover {
+  background-color: #005bb5;
+  transform: scale(1.05);
+}
